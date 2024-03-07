@@ -101,3 +101,82 @@ A third article from *Biostatistics*:
 ### Unclear software dependencies
 ### Your code gets lost forever
 
+---
+
+# Barriers and Solutions
+```{r, echo=F}
+barriers.only <- data.frame(Barrier=c("Multiple versions of code and/or data",
+                                  "Code: problematic use of file paths",
+                                  "Copying results from R to separate manuscript",
+                                  "Unclear order of running scripts",
+                                  "Unclear software dependencies",
+                                  "Your code gets lost forever"),
+                       Solution=c("                             ",
+                                  "                             ",
+                                  "                             ",
+                                  "                             ",
+                                  "                             ",
+                                  "                             "))
+
+barriers <- data.frame(Barrier=c("Multiple versions of code and/or data",
+                                  "Code: problematic use of file paths",
+                                  "Copying results from R to separate manuscript",
+                                  "Unclear order of running scripts",
+                                  "Unclear software dependencies",
+                                  "Your code gets lost forever"),
+                       Solution=c("Version control (e.g. github)",
+                                  "R Projects and here()",
+                                  "Dynamic document generation (e.g. R Markdown)",
+                                  "Dependency tracking (e.g. makefile or single RMD file)",
+                                  "Software management (e.g. Docker, renv)",
+                                  "Publish (e.g. Zenodo, OSF)"))
+knitr::kable(barriers.only, format = 'html')
+```
+
+---
+
+# Barrier: Multiple versions of code and/or data
+
+## Solution: Version control (e.g. github)
+
+Version control is a way to track code changes over time without saving multiple versions of your code.
+
+---
+
+background-image: url("figs/version_control.gif")
+background-size: contain
+
+---
+
+# Why use version control?
+
+ - Can use multiple machines without stress
+ - Can collaborate with others and see all their changes
+ - Can revert back to an older version in case of disaster
+ 
+---
+
+# What version control looks like once it's set up
+
+---
+
+# How to set up version control (intially)
+
+Short version: walk through the instructions on [Happy git With R](https://happygitwithr.com)
+
+Less short version:
+
+ - Sign up to [github](https://github.com/)
+ - Download and install git (you may have it already) ([Chapter 6](https://happygitwithr.com/install-git))
+ - Introduce yourself to git ([Chapter 7](https://happygitwithr.com/hello-git))
+ - Set up a Personal Access Token ([Chapter 9](https://happygitwithr.com/https-pat))
+ - Connect R Studio to git/github ([Chapter 12](https://happygitwithr.com/rstudio-git-github))
+ 
+
+---
+
+# How to set it version control (single project in R)
+
+
+
+

@@ -4,7 +4,7 @@
     <title>Reproducible research</title>
     <meta charset="utf-8" />
     <meta name="author" content="Martin Law" />
-    <script src="libs/header-attrs-2.20/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.26/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -74,10 +74,7 @@ Computational reproducibility: "obtaining consistent results using the same *inp
 
 # Replicable?
 
-&lt;div class="figure"&gt;
-&lt;img src="figs/reproducible-matrix.jpg" alt="How the Turing Way defines reproducible research" width="985" /&gt;
-&lt;p class="caption"&gt;How the Turing Way defines reproducible research&lt;/p&gt;
-&lt;/div&gt;
+![How the Turing Way defines reproducible research](figs/reproducible-matrix.jpg)
 
 ---
 
@@ -120,6 +117,60 @@ A third article from *Biostatistics*:
 ### Unclear software dependencies
 ### Your code gets lost forever
 
+---
+
+# Barriers and Solutions
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Barrier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solution &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Multiple versions of code and/or data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Barrier: Multiple versions of code and/or data
+
+---
+
+background-image: url("figs/version_control.gif")
+background-size: contain
+
+---
+
+
+Solution: Version control (e.g. github)
+
+
+Version control is a way to track your code over time. It also
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
