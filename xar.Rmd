@@ -1,0 +1,103 @@
+---
+title: "Reproducible research"
+subtitle: "ESD Meeting"
+author: "Martin Law"
+institute: "MRC BSU"
+date: "21/03/2024"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<style>
+.middle-freeze{
+padding-top: 12em;
+}
+</style>
+
+---
+
+class: middle-freeze
+
+
+# To begin: What do you understand by the term "reproducible research"?
+
+--
+
+# Why is reproducible research important?
+
+---
+
+# Definitions
+
+"The term **reproducible research** refers to the idea that scientific results should be documented in such a way that their deduction is fully transparent. This requires a detailed description of the methods used to obtain the data and *making the full dataset and the code* to calculate the results easily accessible." `--` Wikipedia (therefore correct).
+
+
+--
+
+"**Reproducible research** refers to the practice of ensuring that the results of scientific studies or experiments can be independently verified by other researchers. It involves *documenting and providing all the necessary data, code, and methodology used* in a study so that others can replicate the analysis and obtain similar results." `--` ChatGPT (therefore even more correct)
+
+---
+
+# Definitions in the literature
+
+
+Reproducible: "Authors provide all the necessary data and the computer codes to run the analysis again, re-creating the results." [Claerbout & Karrenbach, 1992](https://doi.org/10.1190/1.1822162), via [The Turing Way](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions) (accessed Feb 2024)
+
+Computational reproducibility: "obtaining consistent results using the same *input data, computational steps, methods, code, and conditions of analysis*" `--` [National Academies of Sciences, Engineering, and Medicine, 2019](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science), via [Essawy et al.,2020](https://doi.org/10.1016/j.envsoft.2020.104753)
+
+---
+
+
+
+# Replicable?
+
+```{r, fig.cap="How the Turing Way defines reproducible research", echo=F}
+knitr::include_graphics("figs/reproducible-matrix.jpg")
+```
+
+---
+
+# Learning outcomes
+
+### What is meant by "reproducibility"
+### Barriers to reproducibility
+### Solutions to those barriers
+ 
+---
+
+# Activity: time to reproduce some research!
+
+The research, from *Biostatistics*:
+
+Two articles (recommended on [Stack Exchange](https://stats.stackexchange.com/a/13576/38282)):
+
+###[Testing SNPs and sets of SNPs for importance in association studies, Schwender et al.](https://doi.org/10.1093/biostatistics/kxq042)
+
+###[Air pollution and health in Scotland: a multicity study, Lee et al.](https://doi.org/10.1093/biostatistics/kxp010)
+
+A third article from *Biostatistics*:
+
+###[Adaptive clinical trial designs with blinded selection of binary composite endpoints and sample size reassessment, Bofill Roig et al. (Section 5)](https://doi.org/10.1093/biostatistics/kxac040)
+
+
+
+ 
+
+
+---
+
+
+# Barriers to reproducibility
+
+### Multiple versions of code and/or data
+### Code: problematic use of file paths 
+### Copying results from R to separate manuscript
+### Unclear order of running scripts
+### Unclear software dependencies
+### Your code gets lost forever
+
