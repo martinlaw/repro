@@ -1,0 +1,10 @@
+/* Override code block styling to enable word wrapping */
+pre {
+  white-space: pre-wrap;
+}
+
+/* Override code block styling to enable word wrapping */
+.remark-code, .remark-code-line {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}

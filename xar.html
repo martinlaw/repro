@@ -4,9 +4,10 @@
     <title>Reproducible research</title>
     <meta charset="utf-8" />
     <meta name="author" content="Martin Law" />
-    <script src="libs/header-attrs-2.26/header-attrs.js"></script>
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/header-attrs-2.20/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -31,6 +32,7 @@ class: center, middle, inverse, title-slide
 ---
 
 
+
 &lt;style&gt;
 .middle-freeze{
 padding-top: 12em;
@@ -39,7 +41,6 @@ padding-top: 12em;
 
 ---
 
-class: middle-freeze
 
 
 # To begin: What do you understand by the term "reproducible research"?
@@ -48,7 +49,10 @@ class: middle-freeze
 
 # Why is reproducible research important?
 
+
 ---
+
+
 
 # Definitions
 
@@ -74,7 +78,10 @@ Computational reproducibility: "obtaining consistent results using the same *inp
 
 # Replicable?
 
-![How the Turing Way defines reproducible research](figs/reproducible-matrix.jpg)
+&lt;div class="figure"&gt;
+&lt;img src="figs/reproducible-matrix.jpg" alt="How the Turing Way defines reproducible research" width="985" /&gt;
+&lt;p class="caption"&gt;How the Turing Way defines reproducible research&lt;/p&gt;
+&lt;/div&gt;
 
 ---
 
@@ -133,11 +140,11 @@ A third article from *Biostatistics*:
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -159,6 +166,10 @@ A third article from *Biostatistics*:
 
 # Barrier: Multiple versions of code and/or data
 
+## Solution: Version control (e.g. github)
+
+Version control is a way to track code changes over time without saving multiple versions of your code.
+
 ---
 
 background-image: url("figs/version_control.gif")
@@ -166,11 +177,472 @@ background-size: contain
 
 ---
 
+# Why use version control?
 
-Solution: Version control (e.g. github)
+ - Can use multiple machines without stress
+ - Can collaborate with others and see all their changes
+ - Can revert back to an older version in case of disaster
+ 
+---
+
+# How to set up version control (intially)
+
+Short version: walk through the instructions on [Happy git With R](https://happygitwithr.com)
+
+Less short version:
+
+ - Sign up to [github](https://github.com/)
+ - Download and install git (you may have it already) ([Chapter 6](https://happygitwithr.com/install-git))
+ - Introduce yourself to git ([Chapter 7](https://happygitwithr.com/hello-git))
+ - Set up a Personal Access Token ([Chapter 9](https://happygitwithr.com/https-pat))
+ - Connect R Studio to git/github ([Chapter 12](https://happygitwithr.com/rstudio-git-github))
+ 
+
+--
+
+# How to set up version control (single project in R)
+
+ - Create a new repo in github
+ - Create a new project in R Studio, cloned from the github **repo**
+
+---
+
+# Using version control once it's set up
+
+ - Make changes to your code
+ - **Commit** them, adding a descriptive message
+ - **Push** the committed changes from the local (computer) repo to the remote (github) repo
+
+---
+
+# Barriers and Solutions
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Barrier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solution &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Multiple versions of code and/or data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Version control (e.g. github) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Barrier: Copying results from R to separate manuscript
+
+All analysis in R, all results written up in LaTeX or Word. After any changes:
+
+Need to copy &amp; paste tables from one program to another.
+
+Need to insert or email figures generated by R.
+
+Need to update every relevant reference to results in the text, e.g. descriptive statistics, point estimates, CIs, simulation study results
 
 
-Version control is a way to track your code over time. It also
+---
+
+### Solution: Dynamic document generation
+
+Use R Markdown (or quarto)!
+
+Output is always up to date. 
+
+All references in text are automatically updated.
+
+If working with non-statisticians, can still use this approach and send resulting HTML file to collaborators: they see the updated text and can save the updated figures.
+
+Can even create manuscripts directly (using `rticles` package in R Markdown or templates in quarto).
+
+---
+
+# Using R Markdown
+
+---
+
+# Barriers and Solutions
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Barrier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solution &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Multiple versions of code and/or data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Version control (e.g. github) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dynamic document generation (e.g. R Markdown) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Barrier: problematic use of file paths in code
+
+---
+
+background-image: url("figs/on-fire.jpg")
+background-size: contain
+
+---
+
+# Barrier: problematic use of file paths in code
+
+## Why?
+
+To tell R where to load a file from (or save a file to), you must specify the location relative to the current *working directory*. But specifying the working directory (or any load/save location) as in the previous slide will cause problems:
+
+ - The code will not run for anyone else
+ - The code will not run for the same author on a different machine
+ - The code may not run for the same author in a year or two
+ 
+---
+
+## Solution: R Projects and here()
+
+
+Use **Projects** in R: when your scripts are part of a Project in R, the working directory will (almost) always be the folder containing all the Project files and subfolders, whoever opens the Project and whatever machine they're using.
+&lt;!-- Then there is no ambiguity on the working directory. --&gt;
+
+Remaining problem:
+ - R Markdown (Rmd) files take the working directory to be be the same folder as the Rmd file.
+ - You need to remember whether you need forward (`/`) or backward (`\`) slashes and whether you need one or two of them.
+
+---
+
+## Solution: `here()`
+
+The `here()` command (from the `here` package):
+ - lets you specify file paths without slashes;
+ - "knows" where the working directory should be.
+
+--
+
+Running `here()` will return the path to the working directory, e.g.
+
+```
+here("figs", "on-fire.jpg")
+## [1] C:/Users/Martin/talks/repro/ 
+```
+
+Arguments inside `here()` will be appended to this path, e.g.
+
+```
+here("figs", "on-fire.jpg")
+## [1] C:/Users/Martin/talks/repro/figs/on-fire.jpg
+```
+
+---
+
+# Barriers and Solutions
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Barrier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solution &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Multiple versions of code and/or data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Version control (e.g. github) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dynamic document generation (e.g. R Markdown) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Barrier: Unclear order of running scripts
+
+
+---
+
+# Barriers and Solutions
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Barrier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solution &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Multiple versions of code and/or data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Version control (e.g. github) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dynamic document generation (e.g. R Markdown) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dependency tracking (e.g. makefile or single RMD file) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Barrier: Unclear software dependencies
+
+--
+
+# Solution: Nikita! (and Docker)
+
+---
+
+# Barriers and Solutions
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Barrier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solution &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Multiple versions of code and/or data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Version control (e.g. github) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dynamic document generation (e.g. R Markdown) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dependency tracking (e.g. makefile or single RMD file) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Software management (e.g. Docker, renv) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Barrier: your code gets lost forever
+
+---
+background-image: url("figs/DOIs.jpg")
+background-size: contain
+
+---
+
+### Solution: publish your code on the Open Science Framework (OSF)
+
+#### What is the OSF?
+
+*The Open Science Framework (OSF) is a tool that promotes open, centralized workflows by enabling capture of different aspects and products of the research lifecycle, including developing a research idea, designing a study, storing and analyzing collected data, and writing and publishing reports or papers.* -- [Open Science Framework (OSF)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5370619/)
+
+####  What is available on OSF:
+
+ - Preregistration
+ - Project
+ - Preprint
+
+---
+ 
+*Preregistration:*
+
+ - Upload a research plan: research question, planned analyses, etc.
+ - DOI
+ - Snapshot/frozen (original always visible)
+ - Updates can be made as new "versions"
+ - Can be private, public, embargoed or shared with only certain people.
+
+-- 
+
+*Project:*
+
+ - Upload any kind of files
+ - Can be sync'd with github repo (and other sources) -- changes are instant
+ - Can be used with R directly (create folders, upload files, etc.)
+ - Public/private/shared with collaborators
+ - DOI
+ 
+--
+
+*Preprint:*
+
+ - Updates can be made as new "versions"
+ - DOI
+ 
+ 
+&lt;!-- #### What else? --&gt;
+
+&lt;!--  - Available forever ("persistent") --&gt;
+&lt;!--  - DOIs everywhere --&gt;
+&lt;!--  - Institutions can have their own page --&gt;
+
+
+
+---
+
+
+# Barriers and Solutions
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Barrier &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Solution &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Multiple versions of code and/or data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Version control (e.g. github) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Copying results from R to separate manuscript &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dynamic document generation (e.g. R Markdown) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Code: problematic use of file paths &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dependency tracking (e.g. makefile or single RMD file) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Software management (e.g. Docker, renv) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Publish (e.g. OSF, Zenodo) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Also worth thinking about
+
+Reproducibility of simulation study results (by yourself and others).
+
+Understanding what your code does, one year later.
+
+---
+
+# Resources
+
+## Version control (github)
+
+## Dynamic document generation (R Markdown, quarto)
+
+## R Projects, here()
+
+## Dependency tracking (makefile, single RMD file)
+
+## Software management (Docker, renv)
+
+## Publishing (OSF)
+
+---
+# Resources
+
+## General/multiple
+
+ - [Doing Meta-Analysis in R: Reporting and Reproducibility (R projects, R Markdown, using OSF with R)](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/reporting-reproducibility.html)
+ - [Reproducible Analysis With R (git/github, R Markdown, publishing without OSF)](https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/)
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
