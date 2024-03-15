@@ -21,12 +21,19 @@ padding-top: 12em;
 }
 </style>
 
----
 
 ```{r, echo=F, include=FALSE}
 library(librarian)
 librarian::shelf(here)
 ```
+
+# Learning outcomes
+
+### What is meant by "reproducibility"
+### Barriers to reproducibility
+### Solutions to those barriers
+ 
+---
 
 # To begin: What do you understand by the term "reproducible research"?
 
@@ -41,21 +48,20 @@ librarian::shelf(here)
 
 # Definitions
 
-"The term **reproducible research** refers to the idea that scientific results should be documented in such a way that their deduction is fully transparent. This requires a detailed description of the methods used to obtain the data and *making the full dataset and the code* to calculate the results easily accessible." `--` Wikipedia (therefore correct).
+"The term **reproducible research** refers to the idea that scientific results should be documented in such a way that their deduction is fully transparent. This requires a detailed description of the methods used to obtain the data and **making the full dataset and the code to calculate the results easily accessible**." `--` Wikipedia (therefore correct).
 
 
 --
 
-"**Reproducible research** refers to the practice of ensuring that the results of scientific studies or experiments can be independently verified by other researchers. It involves *documenting and providing all the necessary data, code, and methodology used* in a study so that others can replicate the analysis and obtain similar results." `--` ChatGPT (therefore even more correct)
+"**Reproducible research** refers to the practice of ensuring that the results of scientific studies or experiments can be independently verified by other researchers. It involves **documenting and providing all the necessary data, code, and methodology used** in a study **so that others can replicate the analysis** and obtain similar results." `--` ChatGPT (therefore even more correct)
 
 ---
 
 # Definitions in the literature
 
-
 Reproducible: "Authors provide all the necessary data and the computer codes to run the analysis again, re-creating the results." [Claerbout & Karrenbach, 1992](https://doi.org/10.1190/1.1822162), via [The Turing Way](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions) (accessed Feb 2024)
 
-Computational reproducibility: "obtaining consistent results using the same *input data, computational steps, methods, code, and conditions of analysis*" `--` [National Academies of Sciences, Engineering, and Medicine, 2019](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science), via [Essawy et al.,2020](https://doi.org/10.1016/j.envsoft.2020.104753)
+Computational reproducibility: "obtaining consistent results using the same **input data, computational steps, methods, code, and conditions of analysis**" `--` [National Academies of Sciences, Engineering, and Medicine, 2019](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science), via [Essawy et al.,2020](https://doi.org/10.1016/j.envsoft.2020.104753)
 
 ---
 
@@ -63,33 +69,37 @@ Computational reproducibility: "obtaining consistent results using the same *inp
 
 # Replicable?
 
-```{r, fig.cap="How the Turing Way defines reproducible research", echo=F}
+```{r, fig.cap="How The Turing Way defines reproducible research", echo=F}
 knitr::include_graphics("figs/reproducible-matrix.jpg")
 ```
 
 ---
 
-# Learning outcomes
-
-### What is meant by "reproducibility"
-### Barriers to reproducibility
-### Solutions to those barriers
- 
----
-
 # Activity: time to reproduce some research!
 
-The research, from *Biostatistics*:
+---
 
-Two articles (recommended on [Stack Exchange](https://stats.stackexchange.com/a/13576/38282)):
+background-image: url("figs/stack-exchange-question.png")
+background-size: contain
+
+---
+
+background-image: url("figs/stack-exchange-answer.png")
+background-size: contain
+
+---
+
+Two articles from *Biostatistics*, a journal that takes reproducibility seriously (recommended on [Stack Exchange](https://stats.stackexchange.com/a/13576/38282)):
 
 ###[Testing SNPs and sets of SNPs for importance in association studies, Schwender et al.](https://doi.org/10.1093/biostatistics/kxq042)
 
+Personally recommended by the journal's Associate Editor for Reproducibility:
+
 ###[Air pollution and health in Scotland: a multicity study, Lee et al.](https://doi.org/10.1093/biostatistics/kxp010)
 
-A third article from *Biostatistics*:
+<!-- A third article from *Biostatistics*: -->
 
-###[Adaptive clinical trial designs with blinded selection of binary composite endpoints and sample size reassessment, Bofill Roig et al. (Section 5)](https://doi.org/10.1093/biostatistics/kxac040)
+<!-- ###[Adaptive clinical trial designs with blinded selection of binary composite endpoints and sample size reassessment, Bofill Roig et al. (Section 5)](https://doi.org/10.1093/biostatistics/kxac040) -->
 
 
 
@@ -100,6 +110,8 @@ A third article from *Biostatistics*:
 
 
 # Barriers to reproducibility
+
+--
 
 ### Multiple versions of code and/or data
 ### Code: problematic use of file paths 
@@ -122,7 +134,7 @@ barriers <- data.frame(Barrier=c("Multiple versions of code and/or data",
                                   "Dynamic document generation (e.g. R Markdown)",
                                   "R Projects and here()",
                                   "Dependency tracking (e.g. makefile or single RMD file)",
-                                  "Software management (e.g. Docker, renv)",
+                                  "Software management (e.g. renv, Docker)",
                                   "Publish (e.g. OSF, Zenodo)"))
 barriers.only <- barriers
 barriers.only$Solution <- ("")
@@ -150,6 +162,17 @@ background-size: contain
  - Can collaborate with others and see all their changes
  - Can revert back to an older version in case of disaster
  
+--
+
+## The Terminology
+
+ - **git**: a version control system;
+ - **repository/repo**: a set of files that you are using version control on; 
+ - **github**: a website/hosting service for your repo (like Dropbox but better);
+ - **commit**: a version/snapshot of your repo that you create, along with a message that you write;
+ - **push**: to send ("push"!) the current version of your repo from your computer ("local") to the hosting service ("remote")
+ - **pull**: to download ("pull"!) the remote version of your repo from the hosting service to your computer.
+
 ---
 
 # How to set up version control (intially)
@@ -320,7 +343,30 @@ knitr::kable(barriers4, format = 'html')
 
 --
 
-# Solution: Nikita! (and Docker)
+## Solution in 3 parts: `renv` and Docker (and Nikita!)
+
+--
+
+### Part 1: `renv`
+
+`renv` ("**r**eproducible **env**ironment") is an R package that helps make R projects reproducible.
+
+When you set up renv in an R project (command `renv::init()`), it makes a list of the packages (and versions) used in that project.
+
+When you (or someone else) opens the project on another computer, renv can be used to download and install those packages (command `renv::restore()`).
+
+To update the list of packages your project needs: `renv::snapshot()`.
+
+To update your packages to the latest versions: `renv::update()`.
+
+--
+
+Sometimes identical R code can give different results on different operating systems. In this case, we need more tools...
+
+
+---
+
+# Part 2 and 3: Docker and Nikita
 
 ---
 
@@ -364,7 +410,7 @@ background-size: contain
  - Updates can be made as new "versions"
  - Can be private, public, embargoed or shared with only certain people.
 
--- 
+--
 
 *Project:*
 
