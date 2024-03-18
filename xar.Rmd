@@ -303,6 +303,72 @@ knitr::kable(barriers3, format = 'html')
 
 # Barrier: Unclear order of running scripts
 
+--
+
+## (Very simple) Solution: use a single R Markdown document
+
+---
+
+## (Simple) Solution: number and name your scripts; use README file; create "do everything" file
+
+### Scripts
+
+Label scripts, e.g. `00-load.R`, `10-clean.R`, `20-analyse.R`, `30-create-figures.R`.
+
+Filenames should be clear. Increments of 10 allow you to add more files later.
+
+### README.md
+
+In github, repos can be created with a README file, which is rendered on the repo page.
+
+Use this to explain to others (and to yourself!) what the code does and how to reproduce the results.
+
+---
+
+## (Simple) Solution: number and name your scripts; use README file; create "do everything" file
+
+### "do everything" file
+
+Create a file that runs all the required files in order, e.g.
+
+```{r, eval=FALSE, echo=TRUE}
+source(00-load.R)
+source(10-clean.R)
+source(20-analyse.R)
+source(30-create-figures.R)
+```
+
+---
+
+## (Complex) Solution: create a pipeline (not a pipe!)
+
+*"In computing, a pipeline, also known as a data pipeline, is a set of data processing elements connected in series, where the output of one element is the input of the next one."*
+
+If the workflow is complex or takes a long time.
+
+Still a file that does everything, called a *makefile*, but also only runs the parts that have (data or code) changed.
+
+Simplest R package: `makeit`. 
+
+Example code:
+
+```{r, eval=FALSE, echo=TRUE}
+make("analysis.R", "input.dat", "output.dat")
+```
+
+```{r, eval=FALSE, echo=TRUE}
+make("01_model.R", "data.dat", "results.dat")
+make("02_plots.R", "results.dat", c("plots/A.png", "plots/B.png"))
+make("03_tables.R", "results.dat", c("tables/A.csv", "tables/B.csv"))
+```
+
+---
+
+## (Complex) Solution: create a pipeline (not a pipe!)
+
+A more popular (though complex) R package for piplines: `targets`.
+
+These packages are for R, but many software agnostic solutions exist (e.g. `Make`).
 
 ---
 
