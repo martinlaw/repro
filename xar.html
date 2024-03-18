@@ -4,7 +4,7 @@
     <title>Reproducible research</title>
     <meta charset="utf-8" />
     <meta name="author" content="Martin Law" />
-    <script src="libs/header-attrs-2.26/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
@@ -39,9 +39,16 @@ padding-top: 12em;
 }
 &lt;/style&gt;
 
+
+
+
+# Learning outcomes
+
+### What is meant by "reproducibility"
+### Barriers to reproducibility
+### Solutions to those barriers
+ 
 ---
-
-
 
 # To begin: What do you understand by the term "reproducible research"?
 
@@ -56,21 +63,20 @@ padding-top: 12em;
 
 # Definitions
 
-"The term **reproducible research** refers to the idea that scientific results should be documented in such a way that their deduction is fully transparent. This requires a detailed description of the methods used to obtain the data and *making the full dataset and the code* to calculate the results easily accessible." `--` Wikipedia (therefore correct).
+"The term **reproducible research** refers to the idea that scientific results should be documented in such a way that their deduction is fully transparent. This requires a detailed description of the methods used to obtain the data and **making the full dataset and the code to calculate the results easily accessible**." `--` Wikipedia (therefore correct).
 
 
 --
 
-"**Reproducible research** refers to the practice of ensuring that the results of scientific studies or experiments can be independently verified by other researchers. It involves *documenting and providing all the necessary data, code, and methodology used* in a study so that others can replicate the analysis and obtain similar results." `--` ChatGPT (therefore even more correct)
+"**Reproducible research** refers to the practice of ensuring that the results of scientific studies or experiments can be independently verified by other researchers. It involves **documenting and providing all the necessary data, code, and methodology used** in a study **so that others can replicate the analysis** and obtain similar results." `--` ChatGPT (therefore even more correct)
 
 ---
 
 # Definitions in the literature
 
-
 Reproducible: "Authors provide all the necessary data and the computer codes to run the analysis again, re-creating the results." [Claerbout &amp; Karrenbach, 1992](https://doi.org/10.1190/1.1822162), via [The Turing Way](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions) (accessed Feb 2024)
 
-Computational reproducibility: "obtaining consistent results using the same *input data, computational steps, methods, code, and conditions of analysis*" `--` [National Academies of Sciences, Engineering, and Medicine, 2019](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science), via [Essawy et al.,2020](https://doi.org/10.1016/j.envsoft.2020.104753)
+Computational reproducibility: "obtaining consistent results using the same **input data, computational steps, methods, code, and conditions of analysis**" `--` [National Academies of Sciences, Engineering, and Medicine, 2019](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science), via [Essawy et al.,2020](https://doi.org/10.1016/j.envsoft.2020.104753)
 
 ---
 
@@ -78,35 +84,47 @@ Computational reproducibility: "obtaining consistent results using the same *inp
 
 # Replicable?
 
-![How the Turing Way defines reproducible research](figs/reproducible-matrix.jpg)
+&lt;div class="figure"&gt;
+&lt;img src="figs/reproducible-matrix.jpg" alt="How The Turing Way defines reproducible research" width="985" /&gt;
+&lt;p class="caption"&gt;How The Turing Way defines reproducible research&lt;/p&gt;
+&lt;/div&gt;
 
 ---
 
-# Learning outcomes
+# Time to reproduce some research!
 
-### What is meant by "reproducibility"
-### Barriers to reproducibility
-### Solutions to those barriers
- 
 ---
 
-# Activity: time to reproduce some research!
+background-image: url("figs/stack-exchange-question.png")
+background-size: contain
 
-The research, from *Biostatistics*:
+---
 
-Two articles (recommended on [Stack Exchange](https://stats.stackexchange.com/a/13576/38282)):
+background-image: url("figs/stack-exchange-answer.png")
+background-size: contain
 
-###[Testing SNPs and sets of SNPs for importance in association studies, Schwender et al.](https://doi.org/10.1093/biostatistics/kxq042)
+---
+
+Two articles from *Biostatistics*, a journal that takes reproducibility seriously (recommended on [Stack Exchange](https://stats.stackexchange.com/a/13576/38282)):
+
+
+Personally recommended by the journal's Associate Editor for Reproducibility:
 
 ###[Air pollution and health in Scotland: a multicity study, Lee et al.](https://doi.org/10.1093/biostatistics/kxp010)
 
-A third article from *Biostatistics*:
+And the other paper linked to in the answer:
 
-###[Adaptive clinical trial designs with blinded selection of binary composite endpoints and sample size reassessment, Bofill Roig et al. (Section 5)](https://doi.org/10.1093/biostatistics/kxac040)
+###[Testing SNPs and sets of SNPs for importance in association studies, Schwender et al.](https://doi.org/10.1093/biostatistics/kxq042)
 
 
 
- 
+&lt;!-- A third article from *Biostatistics*: --&gt;
+
+&lt;!-- ###[Adaptive clinical trial designs with blinded selection of binary composite endpoints and sample size reassessment, Bofill Roig et al. (Section 5)](https://doi.org/10.1093/biostatistics/kxac040) --&gt;
+
+Bonus paper, excerpt:
+&lt;img src="figs/pints_excerpt2.png" width="1116" /&gt;
+
 
 
 ---
@@ -114,9 +132,11 @@ A third article from *Biostatistics*:
 
 # Barriers to reproducibility
 
+--
+
 ### Multiple versions of code and/or data
-### Code: problematic use of file paths 
 ### Copying results from R to separate manuscript
+### Code: problematic use of file paths 
 ### Unclear order of running scripts
 ### Unclear software dependencies
 ### Your code gets lost forever
@@ -180,6 +200,17 @@ background-size: contain
  - Can collaborate with others and see all their changes
  - Can revert back to an older version in case of disaster
  
+--
+
+## The Terminology
+
+ - **git**: a version control system;
+ - **repository/repo**: a set of files that you are using version control on; 
+ - **github**: a website/hosting service for your repos (like Dropbox but better);
+ - **commit**: a version/snapshot of your repo that you create, with a corresponding message that you write;
+ - **push**: to send ("push"!) the current version of your repo from your computer ("local") to the hosting service ("remote")
+ - **pull**: to download ("pull"!) the remote version of your repo from the hosting service to your computer.
+
 ---
 
 # How to set up version control (intially)
@@ -253,20 +284,20 @@ Less short version:
 
 # Barrier: Copying results from R to separate manuscript
 
-All analysis in R, all results written up in LaTeX or Word. After any changes:
+Often, only analysis in R, all results written up in LaTeX or Word.
 
-Need to copy &amp; paste tables from one program to another.
+After any changes:
 
-Need to insert or email figures generated by R.
-
-Need to update every relevant reference to results in the text, e.g. descriptive statistics, point estimates, CIs, simulation study results
+ - Need to copy &amp; paste tables from one program to another.
+ - Need to insert or email figures generated by R.
+ - Need to update every relevant reference to results in the text, e.g. descriptive statistics, point estimates, CIs, simulation study results
 
 
 ---
 
 ### Solution: Dynamic document generation
 
-Use R Markdown (or quarto)!
+Use R Markdown (or Quarto)! R Markdown is for R only. Quarto is for R, Julia and Python (and more in future).
 
 Output is always up to date. 
 
@@ -343,19 +374,19 @@ To tell R where to load a file from (or save a file to), you must specify the lo
  
 ---
 
-## Solution: R Projects and here()
+## Solution: R Projects and `here()`
 
-
-Use **Projects** in R: when your scripts are part of a Project in R, the working directory will (almost) always be the folder containing all the Project files and subfolders, whoever opens the Project and whatever machine they're using.
+Use **Projects** in R: when your scripts are part of a Project in R, the working directory will (almost) always be the folder containing the Project file and subfolders, independent of who opens the Project and the computer they're using.
 &lt;!-- Then there is no ambiguity on the working directory. --&gt;
 
-Remaining problem:
- - R Markdown (Rmd) files take the working directory to be be the same folder as the Rmd file.
- - You need to remember whether you need forward (`/`) or backward (`\`) slashes and whether you need one or two of them.
+Minor remaining problem:
+ - When rendering R Markdown (Rmd) files, R Studio takes the working directory to be be the same folder as the Rmd file (rather than the location of the Project file);
+    - Worse, this can cause a mismatch whereby code runs fine in the console but not in the Rmd file (or vice versa);
+ - Can be confusion over forward (`/`) or backward (`\`) slashes and whether you need one or two of them.
 
 ---
 
-## Solution: `here()`
+## Solution: R Projects `here()`
 
 The `here()` command (from the `here` package):
  - lets you specify file paths without slashes;
@@ -366,8 +397,8 @@ The `here()` command (from the `here` package):
 Running `here()` will return the path to the working directory, e.g.
 
 ```
-here("figs", "on-fire.jpg")
-## [1] C:/Users/Martin/talks/repro/ 
+here()
+## [1] C:/Users/Martin/talks/repro/
 ```
 
 Arguments inside `here()` will be appended to this path, e.g.
@@ -535,7 +566,30 @@ These packages are for R, but many software agnostic solutions exist (e.g. `Make
 
 --
 
-# Solution: Nikita! (and Docker)
+## Solution in 3 parts: `renv` and Docker (and Nikita!)
+
+--
+
+### Part 1: `renv`
+
+`renv` ("**r**eproducible **env**ironment") is an R package that helps make R projects reproducible.
+
+When you set up renv in an R project (command `renv::init()`), it makes a list of the packages (and versions) used in that project.
+
+When you (or someone else) opens the project on another computer, renv can be used to download and install those packages (command `renv::restore()`).
+
+To update the list of packages your project needs: `renv::snapshot()`.
+
+To update your packages to the latest versions: `renv::update()`.
+
+--
+
+Sometimes identical R code can give different results on different operating systems. In this case, we need more tools...
+
+
+---
+
+# Part 2 and 3: Docker and Nikita
 
 ---
 
@@ -567,7 +621,7 @@ These packages are for R, but many software agnostic solutions exist (e.g. `Make
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Software management (e.g. Docker, renv) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Software management (e.g. renv, Docker) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
@@ -608,7 +662,7 @@ background-size: contain
  - Updates can be made as new "versions"
  - Can be private, public, embargoed or shared with only certain people.
 
--- 
+--
 
 *Project:*
 
@@ -665,7 +719,7 @@ background-size: contain
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Unclear software dependencies &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Software management (e.g. Docker, renv) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Software management (e.g. renv, Docker) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Your code gets lost forever &lt;/td&gt;
@@ -685,29 +739,60 @@ Understanding what your code does, one year later.
 
 ---
 
-# Resources
+# Resources (specific)
 
-## Version control (github)
+#### Version control (github)
 
-## Dynamic document generation (R Markdown, quarto)
+ - [Happy git With R (excellent explainer for getting started)](https://happygitwithr.com)
+ - [Learn git concepts, not commands (great high-level explainer for git)](https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc)
+ - Getting to Grips With github (BSU seminar by Phillip Crout, (normally on BSU website -- ask Alison for access))
+ - [(Git happens! 6 Common Git mistakes and how to fix them)](https://about.gitlab.com/blog/2018/08/08/git-happens/)
+ - [Dangit, Git?! (fixes for common git mistakes)](https://dangitgit.com/en)
 
-## R Projects, here()
+#### Dynamic document generation (R Markdown, quarto)
 
-## Dependency tracking (makefile, single RMD file)
-
-## Software management (Docker, renv)
-
-## Publishing (OSF)
-
+ - [R Markdown: The Definitive Guide (written by the creator of R Markdown)](https://bookdown.org/yihui/rmarkdown/)
+ - [Journal templates for quarto](https://github.com/quarto-journals/)
+ 
 ---
-# Resources
 
-## General/multiple
+# Resources (specific)
 
+#### R Projects, here()
+
+ - [Ode to the `here` packge (short explainer)](https://github.com/jennybc/here_here)
+ - [Why use the Here Package When You're Already Using Projects?](https://malco.io/articles/2018-11-05-why-should-i-use-the-here-package-when-i-m-already-using-projects)
+
+#### Dependency tracking (makefile, single RMD file)
+
+ - [CRAN package `makeit`](https://cran.r-project.org/web/packages/makeit/index.html)
+ - [CRAN package `targets`](https://cran.r-project.org/web/packages/targets/vignettes/overview.html)
+
+
+#### Software management (Docker, renv)
+
+ - [Introduction to renv (simple package vignette)](https://rstudio.github.io/renv/articles/renv.html)
+
+#### Publishing (OSF)
+
+ - [Getting Started on the OSF (15-minute video explaining its benefits)](https://help.osf.io/article/342-getting-started-on-the-osf)
+ 
+---
+
+# Resources: General/multiple
+
+ - [How to do the Same Thing More Than Once (paper -- general overview)](https://www.mdpi.com/2624-8611/3/4/53)
+ - [Reproducible Analysis In R (git/github + RStudio, R Markdown)](https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/)
  - [Doing Meta-Analysis in R: Reporting and Reproducibility (R projects, R Markdown, using OSF with R)](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/reporting-reproducibility.html)
  - [Reproducible Analysis With R (git/github, R Markdown, publishing without OSF)](https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/)
-
-
+ - [Intermediate Steps Toward Reproducibility (version control, projects, here(), filenames)](https://bookdown.org/pdr_higgins/rmrwr/intermediate-steps-toward-reproducibility.html)
+ - [CRAN's list of R packages that help users do reproducible research](https://cran.r-project.org/web/views/ReproducibleResearch.html)
+ - [tidylog: R package that summarises what a tidy command has done to a dataset](https://www.r-bloggers.com/2020/01/tidylog/)
+ - [The Turing Way (huge resource explaining all aspects of data sharing and open science)](https://the-turing-way.netlify.app/index.html)
+ - [A Beginner's Guide to Conducting Reproducible Research (paper -- good overview, with list of tools for various aspects of reproducible research)](https://esajournals.onlinelibrary.wiley.com/doi/epdf/10.1002/bes2.1801)
+ - [A taxonomy for reproducible and replicable research in
+environmental modelling (paper -- overview, includes interesting idea of levels of reproducibility (section 2.2 and Figure 6))](https://doi.org/10.1016/j.envsoft.2020.104753)
+ - [Reproducibility and Replicability in Science (free book)](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science)
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
