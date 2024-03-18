@@ -123,7 +123,7 @@ knitr::include_graphics("figs/pints_excerpt2.png")
 ### Multiple versions of code and/or data
 ### Copying results from R to separate manuscript
 ### Code: problematic use of file paths 
-### Unclear order of running scripts
+### Unclear order of actions/running scripts
 ### Unclear software dependencies
 ### Your code gets lost forever
 
@@ -134,7 +134,7 @@ knitr::include_graphics("figs/pints_excerpt2.png")
 barriers <- data.frame(Barrier=c("Multiple versions of code and/or data",
                                   "Copying results from R to separate manuscript",
                                   "Code: problematic use of file paths",
-                                  "Unclear order of running scripts",
+                                  "Unclear order of actions/running scripts",
                                   "Unclear software dependencies",
                                   "Your code gets lost forever"),
                        Solution=c("Version control (e.g. github)",
@@ -297,7 +297,7 @@ Minor remaining problem:
 
 ---
 
-## Solution: R Projects `here()`
+## Solution: R Projects and `here()`
 
 The `here()` command (from the `here` package):
  - lets you specify file paths without slashes;
@@ -331,7 +331,7 @@ knitr::kable(barriers3, format = 'html')
 
 ---
 
-# Barrier: Unclear order of running scripts
+# Barrier: Unclear order of actions/running scripts
 
 --
 
@@ -426,7 +426,7 @@ knitr::kable(barriers4, format = 'html')
 
 When you set up renv in an R project (command `renv::init()`), it makes a list of the packages (and versions) used in that project.
 
-When you (or someone else) opens the project on another computer, renv can be used to download and install those packages (command `renv::restore()`).
+When you (or someone else) opens the project on another computer, renv can be used to download and install those packages (`renv::restore()`).
 
 To update the list of packages your project needs: `renv::snapshot()`.
 
@@ -439,7 +439,7 @@ Sometimes identical R code can give different results on different operating sys
 
 ---
 
-# Part 2 and 3: Docker and Nikita
+# Parts 2 and 3: Docker and Nikita
 
 ---
 
@@ -478,10 +478,10 @@ background-size: contain
 *Preregistration:*
 
  - Upload a research plan: research question, planned analyses, etc.
- - DOI
  - Snapshot/frozen (original always visible)
  - Updates can be made as new "versions"
  - Can be private, public, embargoed or shared with only certain people.
+ - DOI
 
 --
 
@@ -526,6 +526,10 @@ knitr::kable(barriers, format = 'html')
 Reproducibility of simulation study results (by yourself and others).
 
 Understanding what your code does, one year later.
+
+---
+
+# What could you implement? 
 
 ---
 

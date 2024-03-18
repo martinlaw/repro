@@ -4,7 +4,7 @@
     <title>Reproducible research</title>
     <meta charset="utf-8" />
     <meta name="author" content="Martin Law" />
-    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.20/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
@@ -137,7 +137,7 @@ Bonus paper, excerpt:
 ### Multiple versions of code and/or data
 ### Copying results from R to separate manuscript
 ### Code: problematic use of file paths 
-### Unclear order of running scripts
+### Unclear order of actions/running scripts
 ### Unclear software dependencies
 ### Your code gets lost forever
 
@@ -165,7 +165,7 @@ Bonus paper, excerpt:
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of actions/running scripts &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -266,7 +266,7 @@ Less short version:
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of actions/running scripts &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -336,7 +336,7 @@ Can even create manuscripts directly (using `rticles` package in R Markdown or t
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of actions/running scripts &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -386,7 +386,7 @@ Minor remaining problem:
 
 ---
 
-## Solution: R Projects `here()`
+## Solution: R Projects and `here()`
 
 The `here()` command (from the `here` package):
  - lets you specify file paths without slashes;
@@ -433,7 +433,7 @@ here("figs", "on-fire.jpg")
    &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of actions/running scripts &lt;/td&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -449,7 +449,7 @@ here("figs", "on-fire.jpg")
 
 ---
 
-# Barrier: Unclear order of running scripts
+# Barrier: Unclear order of actions/running scripts
 
 --
 
@@ -546,7 +546,7 @@ These packages are for R, but many software agnostic solutions exist (e.g. `Make
    &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of actions/running scripts &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dependency tracking (e.g. makefile or single RMD file) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -576,7 +576,7 @@ These packages are for R, but many software agnostic solutions exist (e.g. `Make
 
 When you set up renv in an R project (command `renv::init()`), it makes a list of the packages (and versions) used in that project.
 
-When you (or someone else) opens the project on another computer, renv can be used to download and install those packages (command `renv::restore()`).
+When you (or someone else) opens the project on another computer, renv can be used to download and install those packages (`renv::restore()`).
 
 To update the list of packages your project needs: `renv::snapshot()`.
 
@@ -616,7 +616,7 @@ Sometimes identical R code can give different results on different operating sys
    &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of actions/running scripts &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dependency tracking (e.g. makefile or single RMD file) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -714,7 +714,7 @@ background-size: contain
    &lt;td style="text-align:left;"&gt; R Projects and here() &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Unclear order of running scripts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Unclear order of actions/running scripts &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dependency tracking (e.g. makefile or single RMD file) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
