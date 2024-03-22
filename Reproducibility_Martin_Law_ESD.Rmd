@@ -587,4 +587,3 @@ Understanding what your code does, one year later.
  - [A taxonomy for reproducible and replicable research in
 environmental modelling (paper -- overview, includes interesting idea of levels of reproducibility (section 2.2 and Figure 6))](https://doi.org/10.1016/j.envsoft.2020.104753)
  - [Reproducibility and Replicability in Science (free book)](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science)
-
